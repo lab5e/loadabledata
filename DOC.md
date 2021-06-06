@@ -41,6 +41,8 @@ You must first install the dependency
 npm i -S @lab5e/loadabledata
 ```
 
+Then you can have a `Lab5eRepos.vue`-file which details the number of repositories Lab5e has publically available.
+
 ```html
 <template>
   <div>
