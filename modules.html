@@ -2742,10 +2742,10 @@ img {
 			</a>
 			<pre><code class="language-html"><span style="color: #800000">&lt;body&gt;</span>
 <span style="color: #000000">  ...</span>
-<span style="color: #000000">  </span><span style="color: #800000">&lt;div</span><span style="color: #000000"> </span><span style="color: #FF0000">id</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;app&quot;</span><span style="color: #800000">&gt;</span>
+<span style="color: #000000">  </span><span style="color: #800000">&lt;div</span><span style="color: #000000"> </span><span style="color: #FF0000">id</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;app&quot;</span><span style="color: #000000"> </span><span style="color: #FF0000">v-cloak</span><span style="color: #800000">&gt;</span>
 <span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myAsyncData.state.loading&quot;</span><span style="color: #800000">&gt;</span><span style="color: #000000">Loading data</span><span style="color: #800000">&lt;/span&gt;</span>
 <span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myAsyncData.state.ready&quot;</span><span style="color: #800000">&gt;</span>
-<span style="color: #000000">      We actually got some data: {{ JSON.stringify(myAsyncData.data) }}</span>
+<span style="color: #000000">      Lab5e has {{ myAsyncData.data.length }} public repositories!</span>
 <span style="color: #000000">    </span><span style="color: #800000">&lt;/span&gt;</span>
 <span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myAsyncData.state.error&quot;</span><span style="color: #800000">&gt;</span><span style="color: #000000">{{ myAsyncData.errorMessage }}</span><span style="color: #800000">&lt;/span&gt;</span>
 <span style="color: #000000">  </span><span style="color: #800000">&lt;/div&gt;</span>
@@ -2757,8 +2757,8 @@ img {
 <span style="color: #000000FF">      </span><span style="color: #001080">el:</span><span style="color: #000000FF"> </span><span style="color: #A31515">&quot;#app&quot;</span><span style="color: #000000FF">,</span>
 <span style="color: #000000FF">      </span><span style="color: #795E26">data</span><span style="color: #000000FF">() {</span>
 <span style="color: #000000FF">        </span><span style="color: #AF00DB">return</span><span style="color: #000000FF"> {</span>
-<span style="color: #000000FF">          </span><span style="color: #001080">myAsyncData:</span><span style="color: #000000FF"> </span><span style="color: #001080">loadableData</span><span style="color: #000000FF">.</span><span style="color: #795E26">fromUrl</span><span style="color: #000000FF">(</span>
-<span style="color: #000000FF">            </span><span style="color: #A31515">&quot;https://example.com/json&quot;</span><span style="color: #000000FF">,</span>
+<span style="color: #000000FF">          </span><span style="color: #001080">myAsyncData:</span><span style="color: #000000FF"> </span><span style="color: #001080">loadabledata</span><span style="color: #000000FF">.</span><span style="color: #795E26">fromUrl</span><span style="color: #000000FF">(</span>
+<span style="color: #000000FF">            </span><span style="color: #A31515">&quot;https://api.github.com/users/lab5e/repos&quot;</span><span style="color: #000000FF">,</span>
 <span style="color: #000000FF">            (</span><span style="color: #001080">error</span><span style="color: #000000FF">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #A31515">`Error trying to fetch data. Error: </span><span style="color: #0000FF">${</span><span style="color: #001080">error</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000FF">,</span>
 <span style="color: #000000FF">          ),</span>
 <span style="color: #000000FF">        };</span>
@@ -2771,7 +2771,34 @@ img {
 				<h2>Example: In ts</h2>
 			</a>
 			<p>You must first install the dependency</p>
-			<pre><code class="language-bash"><span style="color: #000000">npm i @lab5e/loadabledata</span>
+			<pre><code class="language-bash"><span style="color: #000000">npm i -S @lab5e/loadabledata</span>
+</code></pre>
+			<pre><code class="language-html"><span style="color: #800000">&lt;template&gt;</span>
+<span style="color: #000000">  </span><span style="color: #800000">&lt;div&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myAsyncData.state.loading&quot;</span><span style="color: #800000">&gt;</span><span style="color: #000000">Loading data</span><span style="color: #800000">&lt;/span&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myAsyncData.state.ready&quot;</span><span style="color: #800000">&gt;</span>
+<span style="color: #000000">      Lab5e has {{ myAsyncData.data.length }} public repositories!</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;/span&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myAsyncData.state.error&quot;</span><span style="color: #800000">&gt;</span><span style="color: #000000">{{ myAsyncData.errorMessage }}</span><span style="color: #800000">&lt;/span&gt;</span>
+<span style="color: #000000">  </span><span style="color: #800000">&lt;/div&gt;</span>
+<span style="color: #800000">&lt;/template&gt;</span>
+
+<span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">lang</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;ts&quot;</span><span style="color: #800000">&gt;</span>
+<span style="color: #000000FF">  </span><span style="color: #AF00DB">import</span><span style="color: #000000FF"> { </span><span style="color: #001080">fromPromise</span><span style="color: #000000FF">, </span><span style="color: #001080">LoadableData</span><span style="color: #000000FF"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000FF"> </span><span style="color: #A31515">&quot;@lab5e/loadabledata&quot;</span><span style="color: #000000FF">;</span>
+
+<span style="color: #000000FF">  </span><span style="color: #AF00DB">import</span><span style="color: #000000FF"> </span><span style="color: #001080">Vue</span><span style="color: #000000FF"> </span><span style="color: #AF00DB">from</span><span style="color: #000000FF"> </span><span style="color: #A31515">&quot;vue&quot;</span><span style="color: #000000FF">;</span>
+<span style="color: #000000FF">  </span><span style="color: #AF00DB">export</span><span style="color: #000000FF"> </span><span style="color: #AF00DB">default</span><span style="color: #000000FF"> </span><span style="color: #001080">Vue</span><span style="color: #000000FF">.</span><span style="color: #795E26">extend</span><span style="color: #000000FF">({</span>
+<span style="color: #000000FF">    </span><span style="color: #795E26">data</span><span style="color: #000000FF">()</span><span style="color: #000000">:</span><span style="color: #000000FF"> { </span><span style="color: #001080">todos</span><span style="color: #000000">:</span><span style="color: #000000FF"> </span><span style="color: #267F99">LoadableData</span><span style="color: #000000FF">&lt;</span><span style="color: #267F99">Repositories</span><span style="color: #000000FF">[]&gt; } {</span>
+<span style="color: #000000FF">      </span><span style="color: #AF00DB">return</span><span style="color: #000000FF"> {</span>
+<span style="color: #000000FF">        </span><span style="color: #001080">todos:</span><span style="color: #000000FF"> </span><span style="color: #795E26">fromUrl</span><span style="color: #000000FF">(</span>
+<span style="color: #000000FF">          </span><span style="color: #A31515">&quot;https://api.github.com/users/lab5e/repos&quot;</span><span style="color: #000000FF">,</span>
+<span style="color: #000000FF">          (</span><span style="color: #001080">error</span><span style="color: #000000FF">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #A31515">`Failed to list available todos. </span><span style="color: #0000FF">${</span><span style="color: #001080">error</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000FF">,</span>
+<span style="color: #000000FF">          [],</span>
+<span style="color: #000000FF">        ),</span>
+<span style="color: #000000FF">      };</span>
+<span style="color: #000000FF">    },</span>
+<span style="color: #000000FF">  });</span>
+<span style="color: #800000">&lt;/script&gt;</span>
 </code></pre>
 			<a href="#available-convenience-functions" id="available-convenience-functions" style="color: inherit; text-decoration: none;">
 				<h2>Available convenience functions</h2>
@@ -2779,6 +2806,39 @@ img {
 			<a href="#loadabledatafrompromise-example" id="loadabledatafrompromise-example" style="color: inherit; text-decoration: none;">
 				<h3>loadableDataFromPromise example</h3>
 			</a>
+			<p>Given that you have a method that returns a <code>Promise</code> with the signature <code>Promise&lt;Todo[]&gt;</code>:</p>
+			<pre><code class="language-ts"><span style="color: #795E26">listTodos</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #267F99">Todo</span><span style="color: #000000">[]&gt;() { ... }</span>
+</code></pre>
+			<p>You can then use the convenience method <code>fromPromise</code> which can be imported directly from the loadabledata package. A fully working example can be shown underneath:</p>
+			<pre><code class="language-html"><span style="color: #800000">&lt;template&gt;</span>
+<span style="color: #000000">  </span><span style="color: #800000">&lt;div&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;loader-spinner</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;todos.loadingState.loading&quot;</span><span style="color: #800000">&gt;&lt;/loader-spinner&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;span</span><span style="color: #000000"> </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;todos.loadingState.error&quot;</span><span style="color: #800000">&gt;</span>
+<span style="color: #000000">      {{ todos.errorMessage }}</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;/span&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;todo-component</span>
+<span style="color: #000000">      </span><span style="color: #FF0000">v-if</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;todos.loadingState.ready&quot;</span>
+<span style="color: #000000">      </span><span style="color: #FF0000">v-for</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;todo of todos.data&quot;</span>
+<span style="color: #000000">      </span><span style="color: #FF0000">:key</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;todo.id&quot;</span>
+<span style="color: #000000">      </span><span style="color: #FF0000">:todo</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;todo&quot;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&gt;</span>
+<span style="color: #000000">    </span><span style="color: #800000">&lt;/todo-component&gt;</span>
+<span style="color: #000000">  </span><span style="color: #800000">&lt;/div&gt;</span>
+<span style="color: #800000">&lt;/template&gt;</span>
+
+<span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">lang</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;ts&quot;</span><span style="color: #800000">&gt;</span>
+<span style="color: #000000FF">  </span><span style="color: #AF00DB">import</span><span style="color: #000000FF"> { </span><span style="color: #001080">fromPromise</span><span style="color: #000000FF">, </span><span style="color: #001080">LoadableData</span><span style="color: #000000FF"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000FF"> </span><span style="color: #A31515">&quot;@lab5e/loadabledata&quot;</span><span style="color: #000000FF">;</span>
+
+<span style="color: #000000FF">  </span><span style="color: #AF00DB">import</span><span style="color: #000000FF"> </span><span style="color: #001080">Vue</span><span style="color: #000000FF"> </span><span style="color: #AF00DB">from</span><span style="color: #000000FF"> </span><span style="color: #A31515">&quot;vue&quot;</span><span style="color: #000000FF">;</span>
+<span style="color: #000000FF">  </span><span style="color: #AF00DB">export</span><span style="color: #000000FF"> </span><span style="color: #AF00DB">default</span><span style="color: #000000FF"> </span><span style="color: #001080">Vue</span><span style="color: #000000FF">.</span><span style="color: #795E26">extend</span><span style="color: #000000FF">({</span>
+<span style="color: #000000FF">    </span><span style="color: #795E26">data</span><span style="color: #000000FF">()</span><span style="color: #000000">:</span><span style="color: #000000FF"> { </span><span style="color: #001080">todos</span><span style="color: #000000">:</span><span style="color: #000000FF"> </span><span style="color: #267F99">LoadableData</span><span style="color: #000000FF">&lt;</span><span style="color: #267F99">Todo</span><span style="color: #000000FF">[]&gt; } {</span>
+<span style="color: #000000FF">      </span><span style="color: #AF00DB">return</span><span style="color: #000000FF"> {</span>
+<span style="color: #000000FF">        </span><span style="color: #001080">todos:</span><span style="color: #000000FF"> </span><span style="color: #795E26">fromPromise</span><span style="color: #000000FF">(</span><span style="color: #795E26">listTodos</span><span style="color: #000000FF">(), (</span><span style="color: #001080">error</span><span style="color: #000000FF">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #A31515">`Failed to list available todos. </span><span style="color: #0000FF">${</span><span style="color: #001080">error</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000FF">, []),</span>
+<span style="color: #000000FF">      };</span>
+<span style="color: #000000FF">    },</span>
+<span style="color: #000000FF">  });</span>
+<span style="color: #800000">&lt;/script&gt;</span>
+</code></pre>
 			<a href="#loadabledatafromurl-example" id="loadabledatafromurl-example" style="color: inherit; text-decoration: none;">
 				<h3>loadableDataFromUrl example</h3>
 			</a>
@@ -2821,7 +2881,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Create<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;none&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;loading&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;success&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/090fc58/src/states.ts#L9">states.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/6f0dff6/src/states.ts#L9">states.ts:9</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2836,7 +2896,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Loading<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;ready&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;loading&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;none&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/090fc58/src/states.ts#L4">states.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/6f0dff6/src/states.ts#L4">states.ts:4</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2858,7 +2918,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/090fc58/src/loadableData.ts#L28">loadableData.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/6f0dff6/src/loadableData.ts#L28">loadableData.ts:28</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2892,7 +2952,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/090fc58/src/loadableData.ts#L41">loadableData.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/6f0dff6/src/loadableData.ts#L41">loadableData.ts:41</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2915,7 +2975,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/090fc58/src/loadableData.ts#L58">loadableData.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/6f0dff6/src/loadableData.ts#L58">loadableData.ts:58</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2983,7 +3043,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/090fc58/src/loadableData.ts#L105">loadableData.ts:105</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/6f0dff6/src/loadableData.ts#L105">loadableData.ts:105</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
