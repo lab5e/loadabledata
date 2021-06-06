@@ -146,6 +146,8 @@ const fromUrl = function<T>(
       loadableData.errorMessage = errorHandler(error);
       loadableData.state.loading = false;
       loadableData.state.error = true;
+
+      return error;
     });
 
   return loadableData;
