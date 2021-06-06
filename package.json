@@ -58,6 +58,10 @@
         {
             "path": "dist/loadabledata.esm.js",
             "limit": "500 B"
+        },
+        {
+            "path": "dist/loadabledata.umd.production.min.js",
+            "limit": "500 B"
         }
     ]
 }
