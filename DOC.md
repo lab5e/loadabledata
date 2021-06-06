@@ -1,5 +1,11 @@
 # LoadableData
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Documentation](https://img.shields.io/badge/docs-tsdoc-blue.svg)](https://lab5e.github.io/loadabledata)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@lab5e/loadabledata.svg)](#tiny)
+[![loadabledata](https://img.shields.io/npm/v/@lab5e/loadabledata.svg)](https://www.npmjs.com/package/@lab5e/loadabledata)
+[![CI](https://github.com/lab5e/loadabledata/actions/workflows/main.yml/badge.svg)](https://github.com/lab5e/loadabledata/actions/workflows/main.yml)
+
 Simple framework-agnostic wrapper around loadable data to help encapsulate and use state changes in a UI.
 
 [Codepen example](https://codepen.io/pkkummermo/pen/abJGxbx)
