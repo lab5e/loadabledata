@@ -1,6 +1,8 @@
 # LoadableData
 
-Simple wrapper around loadable data to help encapsulate and use state changes in a UI.
+Simple framework-agnostic wrapper around loadable data to help encapsulate and use state changes in a UI.
+
+[Codepen example](https://codepen.io/pkkummermo/pen/abJGxbx)
 
 ## Example: Vue in browser
 
