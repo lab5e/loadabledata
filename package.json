@@ -1,0 +1,57 @@
+{
+    "name": "@lab5e/loadabledata",
+    "version": "0.1.0",
+    "license": "Apache-2.0",
+    "author": "Per Kristian Kummermo",
+    "main": "dist/index.js",
+    "module": "dist/loadabledata.esm.js",
+    "typings": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "scripts": {
+        "start": "tsdx watch",
+        "build": "tsdx build --format cjs,esm,umd --name loadabledata",
+        "test": "tsdx test",
+        "test:watch": "tsdx test --watch",
+        "test:coverage": "tsdx test --coverage",
+        "doc": "typedoc --out docs --theme minimal src/index.ts --exclude \"**/*.spec.ts\" --readme DOC.md",
+        "lint": "tsdx lint",
+        "prepare": "tsdx build",
+        "size": "size-limit",
+        "analyze": "size-limit --why"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsdx lint"
+        }
+    },
+    "devDependencies": {
+        "@size-limit/preset-small-lib": "^4.11.0",
+        "husky": "^6.0.0",
+        "msw": "^0.29.0",
+        "np": "^7.5.0",
+        "size-limit": "^4.11.0",
+        "ts-jest": "^27.0.2",
+        "tsdx": "^0.14.1",
+        "tslib": "^2.2.0",
+        "typedoc": "^0.20.36",
+        "typescript": "^4.2.4",
+        "whatwg-fetch": "^3.6.2"
+    },
+    "peerDependencies": {},
+    "engines": {
+        "node": ">=10"
+    },
+    "size-limit": [
+        {
+            "path": "dist/loadabledata.cjs.production.min.js",
+            "limit": "500 B"
+        },
+        {
+            "path": "dist/loadabledata.esm.js",
+            "limit": "500 B"
+        }
+    ]
+}
