@@ -8,7 +8,9 @@
     "typings": "dist/index.d.ts",
     "files": [
         "dist",
-        "src"
+        "src/index.ts",
+        "src/loadableData.ts",
+        "src/states.ts"
     ],
     "scripts": {
         "start": "tsdx watch",
