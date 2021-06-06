@@ -1,28 +1,34 @@
-# loadabledata
+# LoadableData
 
-## Commands
+Simple framework-agnostic wrapper around loadable data to help encapsulate and use state changes in a UI.
 
-TSDX scaffolds your new library inside `/src`.
+## Development
 
-To run TSDX, use:
+We use [TSDX](https://github.com/formium/tsdx) for pretty much everything, and most npm scripts just proxy to `tsdx`.
 
-```bash
-npm start
-```
+### Run single build
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+Use `npm run build`.
 
-To do a one-off build, use `npm run build`.
+### Run tests
 
 To run tests, use `npm test`.
 
 ## Configuration
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`.
+Code quality is set up with `prettier`, `husky`, and `lint-staged`.
 
 ### Jest
 
 Jest tests are set up to run with `npm test`.
+
+#### Watch mode
+
+To run in watch mode run `npm run test:watch`
+
+#### Coverage
+
+To see coverage run `npm run test:coverage`
 
 ### Bundle Analysis
 
@@ -30,11 +36,13 @@ Jest tests are set up to run with `npm test`.
 
 ### Rollup
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+We us TSDX which uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+
+We create UMD, CommonJS, and JavaScript Modules in our build. The appropriate paths are configured in `package.json` and `dist/index.js`
 
 ### TypeScript
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+We use TypeScript for everything, giving us types for all the published packages.
 
 ## Continuous Integration
 
@@ -43,12 +51,6 @@ TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rol
 - `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
 - `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
 
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
 ## Publishing to NPM
 
-We recommend using [np](https://github.com/sindresorhus/np).
+We use `np`. To publish a new version, write `npx np` and follow the interactive tutorial.
