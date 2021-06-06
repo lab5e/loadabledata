@@ -123,7 +123,12 @@ const fromUrl = function<T>(
   loadableData.promise = fetch(url)
     .then((response) => {
       if (response.ok) {
-        if (response.headers.get("content-type") === "application/json") {
+        if (
+          response.headers
+            .get("content-type")
+            ?.toLocaleLowerCase()
+            .includes("application/json")
+        ) {
           return response.json();
         } else {
           return response.text();
