@@ -1,4 +1,9 @@
-import "whatwg-fetch";
+const fetch = require("node-fetch");
+
+if (!globalThis.fetch) {
+  globalThis.fetch = fetch;
+}
+
 import { emptyLoadableData, fromPromise, fromUrl, LoadableData } from "./loadableData";
 import { setupServer } from "msw/node";
 import { rest } from "msw";
