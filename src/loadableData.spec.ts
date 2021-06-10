@@ -1,12 +1,13 @@
+import { emptyLoadableData, fromPromise, fromUrl } from "./loadableData";
+import { setupServer } from "msw/node";
+import { rest } from "msw";
+import { hasOnlyState, StateType } from "./testUtil";
+
 const fetch = require("node-fetch");
 
 if (!globalThis.fetch) {
   globalThis.fetch = fetch;
 }
-
-import { emptyLoadableData, fromPromise, fromUrl, LoadableData } from "./loadableData";
-import { setupServer } from "msw/node";
-import { rest } from "msw";
 
 const server = setupServer();
 
@@ -156,7 +157,7 @@ describe("loadableData", () => {
       await loadableData.promise?.then(() => {
         expect(hasOnlyState(loadableData, StateType.ERROR)).toBe(true);
         expect(loadableData.errorMessage).toBe(
-          `Failed to load data. {\"code\":401,\"text\":\"Unauthorized\"}`,
+          `Failed to load data. {"code":401,"text":"Unauthorized"}`,
         );
       });
     });
@@ -202,7 +203,7 @@ describe("loadableData", () => {
       await loadableData.promise?.then(() => {
         expect(hasOnlyState(loadableData, StateType.ERROR)).toBe(true);
         expect(loadableData.errorMessage).toBe(
-          `Test response failed. {\"code\":401,\"text\":\"Unauthorized\"}`,
+          `Test response failed. {"code":401,"text":"Unauthorized"}`,
         );
       });
     });
@@ -262,55 +263,3 @@ describe("loadableData", () => {
     });
   });
 });
-
-enum StateType {
-  NONE,
-  LOADING,
-  READY,
-  ERROR,
-}
-
-/**
- * Helper function to ensure that a LoadableData only has one
- * state set
- *
- * @param loadableData LoadableData to test for state
- * @param state The only state that should be true
- * @returns Boolean dependent if only given state is true
- */
-const hasOnlyState = (loadableData: LoadableData<any>, state: StateType): boolean => {
-  switch (state) {
-    case StateType.NONE: {
-      return (
-        loadableData.state.none &&
-        !loadableData.state.loading &&
-        !loadableData.state.ready &&
-        !loadableData.state.error
-      );
-    }
-    case StateType.LOADING: {
-      return (
-        !loadableData.state.none &&
-        loadableData.state.loading &&
-        !loadableData.state.ready &&
-        !loadableData.state.error
-      );
-    }
-    case StateType.READY: {
-      return (
-        !loadableData.state.none &&
-        !loadableData.state.loading &&
-        loadableData.state.ready &&
-        !loadableData.state.error
-      );
-    }
-    case StateType.ERROR: {
-      return (
-        !loadableData.state.none &&
-        !loadableData.state.loading &&
-        !loadableData.state.ready &&
-        loadableData.state.error
-      );
-    }
-  }
-};
