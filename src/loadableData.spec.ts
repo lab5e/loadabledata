@@ -126,7 +126,7 @@ describe("loadableData", () => {
     it("should change state upon successful response", async () => {
       server.use(
         rest.get(TEST_URL, (_, res, ctx) => {
-          return res(ctx.status(200), ctx.body("success"));
+          return res(ctx.status(200), ctx.body("success"), ctx.set("content-type", "text/plain"));
         }),
       );
 
@@ -164,7 +164,7 @@ describe("loadableData", () => {
     it("should allow for an initial state", async () => {
       server.use(
         rest.get(TEST_URL, (_, res, ctx) => {
-          return res(ctx.status(200), ctx.body("success"));
+          return res(ctx.status(200), ctx.body("success"), ctx.set("content-type", "text/plain"));
         }),
       );
 
@@ -207,10 +207,28 @@ describe("loadableData", () => {
       });
     });
 
-    it("should handle non-JSON payloads", async () => {
+    it("should handle payloads with no specific content-type", async () => {
       server.use(
         rest.get(TEST_URL, (_, res, ctx) => {
           return res(ctx.status(200), ctx.body("success"));
+        }),
+      );
+
+      const loadableData = fromUrl(TEST_URL);
+
+      expect(hasOnlyState(loadableData, StateType.LOADING)).toBe(true);
+      expect(loadableData.data).toBe(null);
+
+      await loadableData.promise?.then(() => {
+        expect(hasOnlyState(loadableData, StateType.READY)).toBe(true);
+        expect(loadableData.data).toBe("success");
+      });
+    });
+
+    it("should handle non-JSON payloads", async () => {
+      server.use(
+        rest.get(TEST_URL, (_, res, ctx) => {
+          return res(ctx.status(200), ctx.body("success"), ctx.set("content-type", "text/plain"));
         }),
       );
 
