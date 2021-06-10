@@ -19,7 +19,7 @@
     "scripts": {
         "start": "tsdx watch",
         "build": "tsdx build --format cjs,esm,umd --name loadabledata",
-        "test": "tsdx test",
+        "test": "tsdx lint src && tsdx test",
         "test:watch": "tsdx test --watch",
         "test:coverage": "tsdx test --coverage",
         "doc": "typedoc --out docs --theme minimal src/index.ts --exclude \"**/*.spec.ts\" --readme DOC.md",
