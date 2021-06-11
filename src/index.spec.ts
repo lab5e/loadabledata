@@ -5,6 +5,6 @@ describe("index", () => {
     expect(LoadableData.emptyLoadableData).toBeDefined();
     expect(LoadableData.emptyStates).toBeDefined();
     expect(LoadableData.fromPromise).toBeDefined();
-    expect(LoadableData.fromPromise).toBeDefined();
+    expect(LoadableData.fromUrl).toBeDefined();
   });
 });
