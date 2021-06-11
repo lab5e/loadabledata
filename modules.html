@@ -2710,12 +2710,6 @@ img {
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/states.html" class="tsd-kind-icon">States</a>
 		</li>
-		<li class=" tsd-kind-type-alias">
-			<a href="modules.html#createstate" class="tsd-kind-icon">Create<wbr>State</a>
-		</li>
-		<li class=" tsd-kind-type-alias">
-			<a href="modules.html#loadingstate" class="tsd-kind-icon">Loading<wbr>State</a>
-		</li>
 		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="modules.html#emptyloadabledata" class="tsd-kind-icon">empty<wbr>Loadable<wbr>Data</a>
 		</li>
@@ -2810,8 +2804,13 @@ img {
 			<a href="#available-convenience-functions" id="available-convenience-functions" style="color: inherit; text-decoration: none;">
 				<h2>Available convenience functions</h2>
 			</a>
-			<a href="#loadabledatafrompromise-example" id="loadabledatafrompromise-example" style="color: inherit; text-decoration: none;">
-				<h3>loadableDataFromPromise example</h3>
+			<a href="#frompromise-example" id="frompromise-example" style="color: inherit; text-decoration: none;">
+				<h3>fromPromise example</h3>
+			</a>
+			<p>We also have <code>fromPromise</code>, which takes a generic Promise with a response value that will follow the Promise lifecycle.
+			This is perfect when using client libraries or have a more complex task that isn&#39;t just fetching a URL.</p>
+			<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+				<h4>Example</h4>
 			</a>
 			<p>Given that you have a method that returns a <code>Promise</code> with the signature <code>Promise&lt;Todo[]&gt;</code>:</p>
 			<pre><code class="language-ts"><span style="color: #795E26">listTodos</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #267F99">Todo</span><span style="color: #000000">[]&gt;() { ... }</span>
@@ -2846,9 +2845,6 @@ img {
 <span style="color: #000000FF">  });</span>
 <span style="color: #800000">&lt;/script&gt;</span>
 </code></pre>
-			<a href="#loadabledatafromurl-example" id="loadabledatafromurl-example" style="color: inherit; text-decoration: none;">
-				<h3>loadableDataFromUrl example</h3>
-			</a>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
@@ -2859,13 +2855,6 @@ img {
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/loadabledata.html" class="tsd-kind-icon">Loadable<wbr>Data</a></li>
 							<li class="tsd-kind-interface"><a href="interfaces/states.html" class="tsd-kind-icon">States</a></li>
-						</ul>
-					</section>
-					<section class="tsd-index-section ">
-						<h3>Type aliases</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-type-alias"><a href="modules.html#createstate" class="tsd-kind-icon">Create<wbr>State</a></li>
-							<li class="tsd-kind-type-alias"><a href="modules.html#loadingstate" class="tsd-kind-icon">Loading<wbr>State</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -2881,39 +2870,6 @@ img {
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Type aliases</h2>
-			<section class="tsd-panel tsd-member tsd-kind-type-alias">
-				<a name="createstate" class="tsd-anchor"></a>
-				<h3>Create<wbr>State</h3>
-				<div class="tsd-signature tsd-kind-icon">Create<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;none&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;loading&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;success&quot;</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/eeae0d3/src/states.ts#L9">states.ts:9</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>CreateState is the different states available for a loading lifecycle</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-type-alias">
-				<a name="loadingstate" class="tsd-anchor"></a>
-				<h3>Loading<wbr>State</h3>
-				<div class="tsd-signature tsd-kind-icon">Loading<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;ready&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;loading&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;error&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;none&quot;</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/eeae0d3/src/states.ts#L4">states.ts:4</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>LoadingState is the different states available for a loading lifecycle</p>
-					</div>
-				</div>
-			</section>
-		</section>
-		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Functions</h2>
 			<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
 				<a name="emptyloadabledata" class="tsd-anchor"></a>
@@ -2925,7 +2881,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/eeae0d3/src/loadableData.ts#L28">loadableData.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/ac3d2bf/src/loadableData.ts#L28">loadableData.ts:28</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2959,7 +2915,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/eeae0d3/src/loadableData.ts#L41">loadableData.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/ac3d2bf/src/loadableData.ts#L41">loadableData.ts:41</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2982,7 +2938,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/eeae0d3/src/loadableData.ts#L58">loadableData.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/ac3d2bf/src/loadableData.ts#L58">loadableData.ts:58</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3050,7 +3006,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/eeae0d3/src/loadableData.ts#L105">loadableData.ts:105</a></li>
+								<li>Defined in <a href="https://github.com/lab5e/loadabledata/blob/ac3d2bf/src/loadableData.ts#L105">loadableData.ts:105</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
