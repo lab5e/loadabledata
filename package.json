@@ -18,7 +18,7 @@
     ],
     "scripts": {
         "start": "tsdx watch",
-        "build": "tsdx build --format cjs,esm,umd --name loadabledata",
+        "build": "tsdx build --format cjs,esm,umd --name loadabledata -i src/index.ts",
         "test": "tsdx lint src && tsdx test",
         "test:watch": "tsdx test --watch",
         "test:coverage": "tsdx test --coverage",
