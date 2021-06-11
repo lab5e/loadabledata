@@ -82,7 +82,12 @@ Then you can have a `Lab5eRepos.vue`-file which details the number of repositori
 
 ## Available convenience functions
 
-### loadableDataFromPromise example
+### fromPromise example
+
+We also have `fromPromise`, which takes a generic Promise with a response value that will follow the Promise lifecycle.
+This is perfect when using client libraries or have a more complex task that isn't just fetching a URL.
+
+#### Example
 
 Given that you have a method that returns a `Promise` with the signature `Promise<Todo[]>`:
 
@@ -122,5 +127,3 @@ You can then use the convenience method `fromPromise` which can be imported dire
   });
 </script>
 ```
-
-### loadableDataFromUrl example
