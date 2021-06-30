@@ -22,11 +22,11 @@ We have a [TSDoc](https://lab5e.github.io/loadabledata/) that will include all d
 <body>
   ...
   <div id="app" v-cloak>
-    <span v-if="myAsyncData.state.loading">Loading data</span>
-    <span v-if="myAsyncData.state.ready">
-      Lab5e has {{ myAsyncData.data.length }} public repositories!
+    <span v-if="repositories.state.loading">Loading data</span>
+    <span v-if="repositories.state.ready">
+      Lab5e has {{ repositories.data.length }} public repositories!
     </span>
-    <span v-if="myAsyncData.state.error">{{ myAsyncData.errorMessage }}</span>
+    <span v-if="repositories.state.error">{{ repositories.errorMessage }}</span>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -36,7 +36,7 @@ We have a [TSDoc](https://lab5e.github.io/loadabledata/) that will include all d
       el: "#app",
       data() {
         return {
-          myAsyncData: loadabledata.fromUrl(
+          repositories: loadabledata.fromUrl(
             "https://api.github.com/users/lab5e/repos",
             (error) => `Error trying to fetch data. Error: ${error}`,
           ),
@@ -60,11 +60,11 @@ Then you can have a `Lab5eRepos.vue`-file which details the number of repositori
 ```html
 <template>
   <div>
-    <span v-if="myAsyncData.state.loading">Loading data</span>
-    <span v-if="myAsyncData.state.ready">
-      Lab5e has {{ myAsyncData.data.length }} public repositories!
+    <span v-if="repositories.state.loading">Loading data</span>
+    <span v-if="repositories.state.ready">
+      Lab5e has {{ repositories.data.length }} public repositories!
     </span>
-    <span v-if="myAsyncData.state.error">{{ myAsyncData.errorMessage }}</span>
+    <span v-if="repositories.state.error">{{ repositories.errorMessage }}</span>
   </div>
 </template>
 
@@ -73,9 +73,9 @@ Then you can have a `Lab5eRepos.vue`-file which details the number of repositori
 
   import Vue from "vue";
   export default Vue.extend({
-    data(): { todos: LoadableData<Repositories[]> } {
+    data(): { repositories: LoadableData<Repositories[]> } {
       return {
-        todos: fromUrl(
+        repositories: fromUrl(
           "https://api.github.com/users/lab5e/repos",
           (error) => `Failed to list available todos. ${error}`,
           [],
